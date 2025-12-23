@@ -2,7 +2,7 @@ services:
   - type: web
     name: meet-app
     runtime: node
-    buildCommand: npm install --prefix backend && npm install --prefix frontend/meet && npm run build --prefix frontend/meet
+    buildCommand: npm install --prefix backend && npm install --legacy-peer-deps --prefix frontend/meet && npm run build --prefix frontend/meet
     startCommand: node index.js
     envVars:
       - key: NODE_ENV
