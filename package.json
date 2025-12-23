@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build":"npm install --prefix backend && npm install --prefix frontend/meet && npm run build --prefix frontend//meet",
-    "start":"npm run start --prefix backend"
+    "start":"node index.js"
 
   },
   "repository": {
