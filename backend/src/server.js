@@ -4,8 +4,11 @@
 import express from "express"
 import mongoose from "mongoose"
 import {ENV} from "../src/config/env.js"
+import path from "path"
 
 const app = express()
+
+const __dirname = path.resolve()
 
 app.get("/health",(req,res)=>{
     res.status(200).json({
