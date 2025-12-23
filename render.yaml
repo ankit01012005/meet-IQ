@@ -4,10 +4,10 @@ services:
     runtime: node
     buildCommand: npm install --prefix backend && npm install --prefix frontend/meet && npm run build --prefix frontend/meet
     startCommand: node index.js
-    # envVars:
-    #   - key: NODE_ENV
-    #     value: production
-    #   - key: PORT
-    #     value: 3000
-    #   - key: DB_URL
-    #     generateValue: false
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DB_URL
+        generateValue: false
