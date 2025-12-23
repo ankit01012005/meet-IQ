@@ -1,14 +1,15 @@
 //this is module type import
 //where as commonjs use require
-
 import express from "express"
 import mongoose from "mongoose"
-import {ENV} from "../src/config/env.js"
+import {ENV} from "./config/env.js"
 import path from "path"
+import { fileURLToPath } from "url"
 
 const app = express()
 
-const __dirname = path.resolve()
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 app.get("/health",(req,res)=>{
     res.status(200).json({
@@ -25,9 +26,9 @@ app.get("/books",(req,res)=>{
 })
 
 if(ENV.NODE_ENV==="production"){
-    app.use(express.static(path.join(__dirname,"../frontend/meet/dist")))
+    app.use(express.static(path.join(__dirname,"../../frontend/meet/dist")))
     app.get("/{*any}",(req,res)=>{
-        res.sendFile(path.join(__dirname,"../frontend/meet","dist","index.html"))
+        res.sendFile(path.join(__dirname,"../../frontend/meet","dist","index.html"))
     })
 }
 
