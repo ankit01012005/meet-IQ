@@ -14,4 +14,18 @@ app.get("/health",(req,res)=>{
     })
 })
 
+app.get("/books",(req,res)=>{
+    res.status(200).json({
+        success:true,
+        message:"book endpoint"
+    })
+})
+
+if(ENV.NODE_ENV==="production"){
+    app.use(express.static(path.join(__dirname,"../frontend/meet/dist")))
+    app.get("/{*any}",(req,res)=>{
+        res.sendFile(path.join(__dirname,"../frontend/meet","dist","index.html"))
+    })
+}
+
 app.listen(ENV.PORT,()=>{console.log("server is running at ",ENV.PORT)})
