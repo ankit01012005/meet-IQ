@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import {ENV} from "./config/env.js"
 import path from "path"
 import { fileURLToPath } from "url"
+import db_connect from "./config/db.js"
 
 const app = express()
 
@@ -25,11 +26,21 @@ app.get("/books",(req,res)=>{
     })
 })
 
+console.log(ENV.NODE_ENV)
 if(ENV.NODE_ENV==="production"){
     app.use(express.static(path.join(__dirname,"../../frontend/meet/dist")))
     app.get("/{*any}",(req,res)=>{
         res.sendFile(path.join(__dirname,"../../frontend/meet","dist","index.html"))
     })
+    
 }
 
-app.listen(ENV.PORT,()=>{console.log("server is running at ",ENV.PORT)})
+const startServer = async()=>{
+    try{
+        await db_connect()
+        app.listen(ENV.PORT,()=>{console.log("server is running at ",ENV.PORT)})
+    }catch(error){
+        console.log("server start failed",error.message)
+    }
+}
+startServer()
