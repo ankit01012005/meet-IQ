@@ -2,7 +2,7 @@ services:
   - type: web
     name: meet-app
     runtime: node
-    buildCommand: npm ci --prefix backend && npm ci --prefix frontend/meet && npm run build --prefix frontend/meet
+    buildCommand: npm ci --prefix backend && npm ci --prefix frontend/meet --include=dev && npm run build --prefix frontend/meet
     startCommand: npm ci --prefix backend && node index.js
     envVars:
       - key: NODE_ENV
