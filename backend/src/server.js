@@ -6,11 +6,21 @@ import {ENV} from "./config/env.js"
 import path from "path"
 import { fileURLToPath } from "url"
 import db_connect from "./config/db.js"
+import cors from "cors"
+import {serve} from "inngest/express"
+import { inngest,functions } from "./config/inngest.js"
 
 const app = express()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+//middleware
+app.use(express.json()) 
+//credential true - > the server allow the browser to include cookies on req
+app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
+
+app.use("/api/inngest",serve({client:inngest,functions}))
 
 app.get("/health",(req,res)=>{
     res.status(200).json({
