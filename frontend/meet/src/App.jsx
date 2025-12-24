@@ -6,7 +6,7 @@ function App() {
   return (
     <>
         <div>
-          <h1>Clear provider</h1>
+          <h1>meet-IQ program provider</h1>
           <SignedOut>
             <SignInButton mode='modal'/>
           </SignedOut>

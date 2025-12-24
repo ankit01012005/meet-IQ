@@ -40,7 +40,7 @@ const startServer = async()=>{
         await db_connect()
         app.listen(ENV.PORT,()=>{console.log("server is running at ",ENV.PORT)})
     }catch(error){
-        console.log("server start failded",error.message)
+        console.log("server start failed",error.message)
     }
 }
 startServer()
