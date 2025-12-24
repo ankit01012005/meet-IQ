@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.resolve(process.cwd(), "backend/.env") });
 
 export const ENV = {
-    PORT:process.env.PORT,
-    DB_URL:process.env.DB_URL,
-    NODE_ENV:process.env.NODE_ENV
+    PORT: process.env.PORT || 3000,
+    DB_URL: process.env.DB_URL,
+    NODE_ENV: process.env.NODE_ENV
 }
