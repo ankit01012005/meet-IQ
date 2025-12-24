@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm ci --prefix backend && npm ci --prefix frontend/meet && npm run build --prefix frontend/meet",
+    "postinstall": "npm ci --prefix backend && npm ci --prefix frontend/meet && npm run build --prefix frontend/meet",
     "start": "node index.js"
 
   },
