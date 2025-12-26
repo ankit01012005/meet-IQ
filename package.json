@@ -7,7 +7,6 @@
     "build": "npm ci --prefix backend && npm ci --prefix frontend/meet --include=dev && npm run build --prefix frontend/meet",
     "postinstall": "npm ci --prefix backend && npm ci --prefix frontend/meet --include=dev && npm run build --prefix frontend/meet",
     "start": "node index.js"
-
   },
   "repository": {
     "type": "git",
@@ -20,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ankit01012005/meet-IQ/issues"
   },
-  "homepage": "https://github.com/ankit01012005/meet-IQ#readme"
+  "homepage": "https://github.com/ankit01012005/meet-IQ#readme",
+  "dependencies": {
+    "@clerk/express": "^1.7.41"
+  }
 }
