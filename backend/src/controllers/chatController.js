@@ -7,7 +7,7 @@ export async function tokenGenerater (req, res){
             token:token,
             userId:req.user.clerkId,
             userName:req.user.name,
-            userImage:req.user.image
+            userImage:req.user.profileImage
         })
 
     }catch(e){
