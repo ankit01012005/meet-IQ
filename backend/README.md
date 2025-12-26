@@ -78,3 +78,14 @@ ________________________________________________________________________________
                         |
                         |
                         Database
+
+## stearm-chat config
+
+- installed stream-chat
+- in config stated it fuctions
+- got the key and secrete 
+- through it created instance of it 
+- using instance upseted the user
+- and deleted the user from stream chat
+- stream chat is integrated with inggest 
+- inngest ingest the data to DB and streamchat

@@ -35,6 +35,8 @@ const syncUser = inngest.createFunction(
         image:newUser.profileImage
       })
 
+      // challenge : send a email to user for successfull account creation
+
     }catch(e){
       console.log("error in sync user at inngest",error)
 
