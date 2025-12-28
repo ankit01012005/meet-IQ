@@ -12,6 +12,7 @@ import { inngest,functions } from "./config/inngest.js"
 import { clerkMiddleware, requireAuth } from '@clerk/express'
 import { protectRoute } from "./middleware/protectedRoute.js"
 import routeChat from "./routes/routeChat.js"
+import routeSession from "./routes/routeSession.js"
 
 const app = express()
 
@@ -26,6 +27,8 @@ app.use(clerkMiddleware()) //this adds auth field to the request req.auth()
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 
 app.use("/api/chat",routeChat)
+app.use("/api/session",routeSession)
+
 
 app.use("/api/inngest",serve({client:inngest,functions}))
 
