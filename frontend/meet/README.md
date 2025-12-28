@@ -59,3 +59,9 @@ npm run --prefix frontend/meet dev
 - Add secure handling for Clerk callbacks and any required backend endpoints for auth if needed.
 - Confirm production build is created and served by backend when deploying.
 
+
+
+##
+- setup of frontend
+	# topic to get deep into
+  - installed tw , daisyUi ,react-route , react-hot-toast , tanStack(instead of lengthy fetching and loading data) , axios (instead of fetch)
