@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 const sessionSchema = new mongoose.Schema({
         problem:{
             type:String,
-            require:true
+            required:true
         },
         difficulty:{
             type:String,

@@ -45,7 +45,7 @@ export async function createSession(req,res){
 
 export async function getActiveSession(_,res){
     try{
-        const session = await Session.findOne({status:"active"})
+        const session = await Session.find({status:"active"})
             .populate("host","name profileImage , email , clerkId")
             .sort({createdAt:-1})
             .limit(20)
@@ -65,7 +65,7 @@ export async function getRecentSession(req,res){
         const userId = req.user._id;
 
         //get sessions where user is either host or participants
-        const sessions = await Session.findOne({
+        const sessions = await Session.find({
             status:"completed",
             $or:[{host:userId},{participant:userId}]
         })
@@ -111,7 +111,7 @@ export async function joinSession(req , res){
         if(!session) return res.status(404).json({message:"session not found"})
 
         //cheack if session is already full -has a participant 
-        if(session.participant) return res.status(408).json({message:"Session is full"})
+        if(session.participant) return res.status(409).json({message:"Session is full"})
         
         const channel = chatClient.channel("messaging",session.callId)
         await channel.addMembers([clerkId])
@@ -122,7 +122,7 @@ export async function joinSession(req , res){
         res.status(200).json({session})
 
     }catch(error){
-        console.log("Error in joinSession constrolller",error.message)
+        console.log("Error in joinSession controlller",error.message)
         res.status(500).json({message:"Inter Server Failure"})
     }
 }
@@ -141,7 +141,7 @@ export async function endSession(req , res){
             return res.status(403).json({message:"Only the host can end the session"})
         }
         if(session.status === "completed"){
-            return res.status(408).json({message:"The session has been terminated already"})
+            return res.status(409).json({message:"The session has been terminated already"})
         }
     
         //delete stream video call
@@ -154,9 +154,11 @@ export async function endSession(req , res){
 
         session.status = "completed"
         await session.save()
-        
+
+        res.status(200).json({message:"Session Completed"})
+
     }catch(error){
-        console.log("Error in endingSession constrolller",error.message)
+        console.log("Error in endingSession controlller",error.message)
         res.status(500).json({message:"Inter Server Failure"})
 
     }
