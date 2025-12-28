@@ -32,5 +32,3 @@ export const deleteStreamUser = async(userId) => {
         console.error("Error deleting Stream user:",error)
     }
 }
-
-//todo : add other method to generate token

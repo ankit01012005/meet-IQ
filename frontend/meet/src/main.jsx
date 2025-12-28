@@ -3,6 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { BrowserRouter } from 'react-router'
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
+
+//we use queryClient for auto refetching of data and other fuctions from api
+const queryClient = new QueryClient()
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -12,8 +21,12 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-        <App />
-    </ClerkProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+            <App />
+        </ClerkProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   </StrictMode>,
 )
