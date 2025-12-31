@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element ={!user.isSignedIn ? <Homepage/> : <Navigate to="/dashboard"/>}/>
           <Route path="dashboard" element={user.isSignedIn ? <DashboardPage/> : <Navigate to="/"/>}/>
-          <Route path="/problem" element ={user.isSignedIn ? <ProblemPage/>: <Navigate to ="/"/>}/>
+          <Route path="/problems" element ={user.isSignedIn ? <ProblemPage/>: <Navigate to ="/"/>}/>
         </Routes>
 
         <Toaster/>
