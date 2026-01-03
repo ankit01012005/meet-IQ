@@ -16,7 +16,7 @@ function ProblemPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [currentProblemId, setCurrentProblemId] = useState("two-sum");
+    const [currentProblemId, setCurrentProblemId] = useState("two-sum");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
   const [code, setCode] = useState(PROBLEMS[currentProblemId].starterCode.javascript);
   const [output, setOutput] = useState(null);
@@ -81,7 +81,7 @@ function ProblemPage() {
     return normalizedActual == normalizedExpected;
   };
 
-  const handleRunCode = async () => {
+    const handleRunCode = async () => {
     setIsRunning(true);
     setOutput(null);
 
