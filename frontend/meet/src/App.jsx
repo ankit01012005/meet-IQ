@@ -1,9 +1,10 @@
 import { Routes,Route, Navigate } from "react-router"
 import Homepage from "./pages/Homepage"
-import ProblemPage from "./pages/ProblemPage"
+import ProblemsPage from "./pages/ProblemsPage"
 import { useUser } from "@clerk/clerk-react"
 import { Toaster } from "react-hot-toast"
 import DashboardPage from "./pages/DashboardPage"
+import ProblemPage from "./pages/ProblemPage"
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element ={!user.isSignedIn ? <Homepage/> : <Navigate to="/dashboard"/>}/>
           <Route path="dashboard" element={user.isSignedIn ? <DashboardPage/> : <Navigate to="/"/>}/>
-          <Route path="/problems" element ={user.isSignedIn ? <ProblemPage/>: <Navigate to ="/"/>}/>
+          <Route path="/problems" element ={user.isSignedIn ? <ProblemsPage/>: <Navigate to ="/"/>}/>
+          <Route path="/problem/:id" element ={user.isSignedIn ? <ProblemPage/>: <Navigate to ="/"/>}/>
         </Routes>
 
         <Toaster/>
