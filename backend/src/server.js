@@ -29,7 +29,6 @@ app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 app.use("/api/chat",routeChat)
 app.use("/api/sessions",routeSession)
 
-
 app.use("/api/inngest",serve({client:inngest,functions}))
 
 // when you pass a array of middlewares it auto flattens them and extecute sequentially

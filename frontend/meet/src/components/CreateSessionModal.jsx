@@ -29,7 +29,7 @@ function CreateSessionModal({
             <select
               className="select w-full"
               value={roomConfig.problem}
-              onChange={(e) => {
+                            onChange={(e) => {
                 const selectedProblem = problems.find((p) => p.title === e.target.value);
                 setRoomConfig({
                   difficulty: selectedProblem.difficulty,
