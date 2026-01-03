@@ -27,7 +27,7 @@ app.use(clerkMiddleware()) //this adds auth field to the request req.auth()
 app.use(cors({origin:ENV.CLIENT_URL,credentials:true}))
 
 app.use("/api/chat",routeChat)
-app.use("/api/session",routeSession)
+app.use("/api/sessions",routeSession)
 
 
 app.use("/api/inngest",serve({client:inngest,functions}))

@@ -11,12 +11,15 @@ import { executeCode } from "../config/piston.js";
 
 import toast from "react-hot-toast";
 import confetti from "canvas-confetti";
+import { sessionApi } from "../api/sessions.js";
+import { useActiveSessions } from "../hooks/useSessions.js";
 
 function ProblemPage() {
+
   const { id } = useParams();
   const navigate = useNavigate();
 
-    const [currentProblemId, setCurrentProblemId] = useState("two-sum");
+  const [currentProblemId, setCurrentProblemId] = useState("two-sum");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
   const [code, setCode] = useState(PROBLEMS[currentProblemId].starterCode.javascript);
   const [output, setOutput] = useState(null);
