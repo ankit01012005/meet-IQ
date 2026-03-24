@@ -1,67 +1,76 @@
-(# Frontend (meet) — Progress so far)
+# Meet - Collaborative Video & Code Editor
 
-## Summary
+## Overview
 
-- **Purpose:** Vite + React single-page app for Meet-IQ; uses Clerk for authentication and builds with Vite.
-- **Entry point:** `frontend/meet/src/main.jsx` — mounts React app and provides Clerk `ClerkProvider`.
-- **Auth:** Clerk integration requires `VITE_CLERK_PUBLISHABLE_KEY` in Vite environment.
+Meet is a full-stack application for real-time collaborative coding with video calls. Developers can join sessions to solve problems together, write and execute code, and communicate via video and chat.
 
-## Technologies used
+## Tech Stack
 
-- **Vite** — development server and build tool.
-- **React** — UI library.
-- **@clerk/clerk-react** — authentication (sign-in, sign-out, user button components).
+**Frontend:**
+- React + Vite (UI framework & build tool)
+- Tailwind CSS + DaisyUI (styling)
+- Axios (HTTP client)
+- TanStack Query (data fetching & caching)
+- React Router (routing)
+- React Hot Toast (notifications)
+- Clerk (authentication)
 
-## What is implemented
+**Backend:**
+- Node.js + Express (REST API)
+- MongoDB (database)
+- Inngest (background jobs)
+- Stream API (real-time messaging & video)
 
-- App shell in `frontend/meet/src/App.jsx` with basic sign-in/sign-out UI using Clerk components.
-- Frontend expects `VITE_CLERK_PUBLISHABLE_KEY` (throws error on missing key at startup).
-- Vite scripts: `dev`, `build`, `preview` defined in `frontend/meet/package.json`.
+**Code Execution:**
+- Piston API (code execution engine)
 
-## Workflow diagram (current)
+## Key Concepts
+
+- **Sessions**: Multi-user collaborative coding environments
+- **Video Calls**: Real-time video communication
+- **Code Editor**: Live multi-language code editing
+- **Code Execution**: Run and test code snippets instantly
+- **Chat**: Session-based messaging
+- **Authentication**: Clerk-based user management
+
+
+## Project Structure
 
 ```
-Developer
-	├─ runs `npm run dev` (frontend) -> Vite dev server serves React app
-	├─ builds frontend with `npm run build` -> `frontend/meet/dist`
-	└─ Clerk handles authentication in the browser
-
-Frontend (browser)
-	├─ calls Backend API endpoints (e.g., `/health`, `/books`)
-	└─ receives data from Express server
-
-Backend (Express)
-	└─ connects to MongoDB via Mongoose (uses `DB_URL` from `backend/.env`)
-
-Production
-	└─ Express serves `frontend/meet/dist` when `NODE_ENV=production`
+Meet/
+├── frontend/meet/          # React Vite app
+│   ├── src/
+│   │   ├── components/     # UI components
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── pages/          # Page routes
+│   │   ├── api/            # API client
+│   │   └── config/         # Config & utilities
+│   └── package.json
+└── backend/                # Express server
+    ├── src/
+    │   ├── controllers/    # Business logic
+    │   ├── models/         # Database schemas
+    │   ├── routes/         # API endpoints
+    │   ├── middleware/     # Auth & utilities
+    │   └── config/         # Configuration
+    └── package.json
 ```
 
-## How to run (dev)
+## Quick Start
 
-1. Ensure Vite env var is set for Clerk: create `frontend/meet/.env` with `VITE_CLERK_PUBLISHABLE_KEY=your_key`.
-2. From `frontend/meet` run:
-
+**Frontend:**
 ```bash
+cd frontend/meet
 npm install
 npm run dev
 ```
 
-Or from project root run frontend prefix commands:
-
+**Backend:**
 ```bash
-npm run --prefix frontend/meet dev
+cd backend
+npm install
+npm start
 ```
 
-## Notes / Next steps (you will edit manually)
+Set required env variables in `.env` files (Clerk key for frontend, DB URL & API keys for backend).
 
-- Replace placeholder UI with real routes, components, and pages.
-- Add secure handling for Clerk callbacks and any required backend endpoints for auth if needed.
-- Confirm production build is created and served by backend when deploying.
-
-
-
-##
-- setup of frontend
-	# topic to get deep into
-  - installed tw , daisyUi ,react-route , react-hot-toast , tanStack(instead of lengthy fetching and loading data) , axios (instead of fetch)
